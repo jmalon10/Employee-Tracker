@@ -45,26 +45,42 @@ class Queries {
              this.updateEmployeeRole();
         }else if (answers.action === 'Exit') {
             this.exit = true;
+            process.exit(0);
         }if (!this.exit) {
              this.performActions(); // Recursively call to show the menu again
         }
       })
     }
-    async viewAllDepartments() {
-        // const res = await this.pool.query('SELECT * FROM departments');
-        // console.log(res); 
-        console.log(`user wants to view all departments`)
+
+    async viewAllDepartments(): Promise<any> {
+        try {
+            const result = await this.pool.query('SELECT * FROM department');
+            console.table(result.rows);  
+        } catch (err) {
+            console.error(err);
+            throw new Error('Something went wrong while fetching departments'); 
+        }
     }
    
     // Add similar methods for other actions
-    async viewAllRoles() {
-        const res = await this.pool.query('SELECT * FROM roles');
-        console.log(res.rows);
+    async viewAllRoles(): Promise<any> {
+        try {
+            const result = await this.pool.query('SELECT * FROM role');
+            console.table(result.rows);  
+        } catch (err) {
+            console.error(err);
+            throw new Error('Something went wrong while fetching roles');  
+        }
     }
 
-    async viewAllEmployees() {
-        const res = await this.pool.query('SELECT * FROM employees');
-        console.log(res.rows);
+    async viewAllEmployees() : Promise<any> {
+        try {
+            const result = await this.pool.query('SELECT * from employee');
+            console.table(result.rows);  
+        } catch (err) {
+            console.error(err);
+            throw new Error('Something went wrong while fetching roles');  
+        }
     }
 
     async addDepartment() {
