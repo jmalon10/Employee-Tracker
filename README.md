@@ -12,13 +12,13 @@ Do you have a company with hundreds of employees and find it hard to keep track 
 - [Questions](#questions)
 
 ## Installation
--Copy either the HTTPS, SSH or GitHUB CLI from the green code dropdown menu found in this GitHub repository page
--Open your terminal in a safe folder and git clone the repository using the copied link
+- Copy either the HTTPS, SSH or GitHUB CLI from the green code dropdown menu found in this GitHub repository page
+- Open your terminal in a safe folder and git clone the repository using the copied link
 
 ## Usage
--After cloning the repository, open an integrated terminal from the main package.json file
--run ' npm start ' in the terminal and use the arrow keys to answer the prompts that follow
--Watch the video below to see a demonstration!
+- After cloning the repository, open an integrated terminal from the main package.json file
+- run ' npm start ' in the terminal and use the arrow keys to answer the prompts that follow
+- Watch the video below to see a demonstration!
 
 ## License
 MIT License
