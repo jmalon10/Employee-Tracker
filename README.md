@@ -16,9 +16,17 @@ Do you have a company with hundreds of employees and find it hard to keep track 
 - Open your terminal in a safe folder and git clone the repository using the copied link
 
 ## Usage
-- After cloning the repository, open an integrated terminal from the main package.json file
+- In order to use this application, please download postgreSQL 
+- After cloning the repository, open an integrated terminal in the schema.sql file from the db folder
+- initiate the SQL app by typing in the terminal ' psql -U postgres '
+- connect to the database by entering \i schema.sql and run \i seeds.sql to add some existing information to the database to play around with
+- Next, open an integrated terminal from the main package.json file
 - run ' npm start ' in the terminal and use the arrow keys to answer the prompts that follow
 - Watch the video below to see a demonstration!
+
+https://github.com/user-attachments/assets/a0620d89-49b4-4eee-9466-1d4eca6439ca
+
+
 
 ## License
 MIT License
