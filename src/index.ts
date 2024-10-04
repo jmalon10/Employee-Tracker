@@ -191,17 +191,43 @@ class Queries {
             VALUES ($1, $2, $3, $4) RETURNING *;`, [firstName, lastName, role, department]);
     
             // Log the result to the console
-            console.log('Role added:');
+            console.log('employee added:');
             console.table(result.rows); 
     
         } catch (err) {
-            console.error('Something went wrong while adding a role:', err);
+            console.error('Something went wrong while adding an employee:', err);
         } 
        
     }
 
-    async updateEmployeeRole() {
-        // Implement update employee role logic
+    async updateEmployeeRole() : Promise<void> {
+        try {
+            const answers = await inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'name',
+                    message: 'Enter the first name of the employee whos role you would like to update:',
+                },
+                {
+                    type: 'input',
+                    name: 'role',
+                    message: 'Enter the role id of the new role for the employee:',
+                }
+            ]);
+    
+            const { name, role} = answers;
+    
+            // Perform the database insert operation UPDATE employee SET role_id = ($1) WHERE first_name = ($2);
+            const result = await this.pool.query(`UPDATE employee SET role_id = ($1) WHERE first_name = ($2) RETURNING *;`, [role, name]);
+
+            // Log the result to the console
+            console.log('Role updated:'); 
+            console.table(result.rows);
+    
+        } catch (err) {
+            console.error('Something went wrong while updating an employee role:', err);
+        } 
+       
     }
 
     async closeConnection() {
