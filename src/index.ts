@@ -158,8 +158,46 @@ class Queries {
        
     }
 
-    async addEmployee() {
-        // Implement add employee logic
+    async addEmployee() : Promise<void> {
+        try {
+            // Prompt the user for department input
+            const answers = await inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'firstName',
+                    message: 'Enter the first name of the employee you would like to add:',
+                },
+                {
+                    type: 'input',
+                    name: 'lastName',
+                    message: 'Enter the last name of the employee you would like to add:',
+                },
+                {
+                    type: 'input',
+                    name: 'role',
+                    message: 'Enter the role id of the employee:',
+                },
+                {
+                    type: 'input',
+                    name: 'department',
+                    message: 'Enter the department id of the department the employee belongs to:',
+                }
+            ]);
+    
+            const { firstName, lastName, role, department} = answers;
+    
+            // Perform the database insert operation
+            const result = await this.pool.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id)
+            VALUES ($1, $2, $3, $4) RETURNING *;`, [firstName, lastName, role, department]);
+    
+            // Log the result to the console
+            console.log('Role added:');
+            console.table(result.rows); 
+    
+        } catch (err) {
+            console.error('Something went wrong while adding a role:', err);
+        } 
+       
     }
 
     async updateEmployeeRole() {
