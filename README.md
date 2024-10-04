@@ -9,7 +9,6 @@ Do you have a company with hundreds of employees and find it hard to keep track 
 - [Usage](#usage)
 - [License](#license)
 - [How to Contribute](#how-to-contribute)
-- [Tests](#tests)
 - [Questions](#questions)
 
 ## Installation
